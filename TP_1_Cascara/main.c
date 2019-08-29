@@ -53,6 +53,8 @@ int main()
                 printf("\n\nEl resultado de A*B es: %.2f \n\n",resultadoMultiplicacion);
                 printf("\n\nEl resultado de !A es: %.2f \n\n",resultadoA);
                 printf("\n\nEl resultado de !B es: %.2f \n\n",resultadoB);
+                system("pause");
+                system("cls");
                 break;
             case 5:
                 system("cls");
