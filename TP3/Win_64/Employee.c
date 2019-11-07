@@ -157,7 +157,7 @@ int compareEmployeeSueldo(void* this,void* thisAux)
     {
         retorno =1;
     }
-    else if(sueldo==sueldoAux)
+    else if(sueldo<sueldoAux)
     {
         retorno=-1;
     }
@@ -185,7 +185,7 @@ int compareEmployeeHoras(void* this,void* thisAux)
     {
         retorno =1;
     }
-    else if(horas==horasAux)
+    else if(horas<horasAux)
     {
         retorno=-1;
     }
@@ -193,6 +193,8 @@ int compareEmployeeHoras(void* this,void* thisAux)
     {
         retorno=0;
     }
+
+    return retorno;
 }
 
 int compareEmployeeNombre(void* this,void* thisAux)
@@ -214,8 +216,10 @@ int compareEmployeeNombre(void* this,void* thisAux)
     {
         retorno=-1;
     }
-    else
+    else if(strcmp(nombre,nombreAux)==0)
     {
         retorno=0;
     }
+
+    return retorno;
 }

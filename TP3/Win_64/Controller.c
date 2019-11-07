@@ -43,7 +43,15 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 
 int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int retorno = 0;
+    FILE* pArchivo;
+    if((pArchivo = fopen(path, "rb")) == NULL)
+    {
+        printf("No se pudo abrir el archivo\n");
+        retorno = 1;
+    }
+    parser_EmployeeFromText(pArchivo, pArrayListEmployee);
+    return retorno;
 }
 
 int controller_addEmployee(LinkedList* pArrayListEmployee)
@@ -298,7 +306,25 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
 
 int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
 {
-    return 1;
+    FILE* pArchivo;
+    Employee* empleadoAux;
+
+    int ret = 0;
+    int i;
+
+    if(pArrayListEmployee != NULL && path != NULL)
+    {
+        pArchivo = fopen(path,"wb");
+
+        for(i=0; i< ll_len(pArrayListEmployee); i++)
+        {
+            empleadoAux = (Employee*)ll_get(pArrayListEmployee,i);
+            fwrite(empleadoAux, sizeof(Employee),1,pArchivo);
+        }
+        fclose(pArchivo);
+        ret=1;
+    }
+    return ret;
 }
 
 

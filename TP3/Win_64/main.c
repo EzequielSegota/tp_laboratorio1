@@ -46,7 +46,7 @@ int main()
             break;
         case 2:
             if(controllerFromText == 0 && controllerFromBinary == 0){
-
+                //controller_loadFromBinary("data.bin",listaEmpleados);
                 controllerFromBinary = 1;
             }
             else{
@@ -115,6 +115,13 @@ int main()
             system("pause");
             break;
         case 9:
+            if(controllerFromText == 1 || controllerFromBinary == 1){
+                controller_saveAsBinary("data.bin",listaEmpleados);
+            }
+            else{
+                printf("\n No se cargaron empleados.\n\n");
+            }
+            system("pause");
             break;
         case 10:
             seguir = 'n';
