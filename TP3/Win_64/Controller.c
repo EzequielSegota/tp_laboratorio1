@@ -219,42 +219,56 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
-    int retorno = 0;
+    int retorno = -1;
+    /*
     Employee* this;
     this=malloc(sizeof(Employee*));
 
     Employee* thisAux;
     thisAux=malloc(sizeof(Employee*));
-
-    Employee* thisAuxAux;
-    thisAuxAux=malloc(sizeof(Employee*));
-
-    float* sueldo;
-    sueldo=malloc(sizeof(float*));
-
-    float* sueldoAux;
-    sueldoAux=malloc(sizeof(float*));
-
+   */
+    int opcion;
     system("cls");
     printf(" ORDENAR EMPLEADOS \n\n");
-    for(int i=0; i<ll_len(pArrayListEmployee)-1; i++)
+    opcion=getValidInt("\n1.Por sueldo\n2.Por horas trabajadas\n3.Por nombre\n4.Salir\nIngrese su opcion:","\nError opcion no valida");
+    switch(opcion)
+    {
+        case 1:
+            ll_sort(pArrayListEmployee,compareEmployeeSueldo,1);
+            break;
+        case 2:
+            ll_sort(pArrayListEmployee,compareEmployeeHoras,1);
+            break;
+        case 3:
+            ll_sort(pArrayListEmployee,compareEmployeeNombre,1);
+            break;
+        case 4:
+            printf("\nAdios");
+            break;
+        default:
+            printf("\Error, opcion no valida...");
+    }
+    /*for(int i=0; i<ll_len(pArrayListEmployee)-1; i++)
     {
         this = ll_get(pArrayListEmployee,i);
-        employee_getSueldo(this,sueldo);
         for(int j=i+1; j<ll_len(pArrayListEmployee); j++)
         {
             thisAux = ll_get(pArrayListEmployee,j);
-            employee_getSueldo(thisAux,sueldoAux);
+
             if(*sueldoAux>*sueldo)
             {
-                thisAuxAux=this;
-                this=thisAux;
-                thisAux=thisAuxAux;
+                retorno = 1;
+            }
+            else if(*sueldoAux==*sueldo)
+            {
+                retorno=0;
+            }
+            else
+            {
+                retorno=-1;
             }
         }
-    }
-    controller_ListEmployee(pArrayListEmployee);
-    retorno = 1;
+    }*/
     return retorno;
 }
 

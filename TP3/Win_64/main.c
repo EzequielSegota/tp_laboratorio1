@@ -96,7 +96,13 @@ int main()
             system("pause");
             break;
         case 7:
-            controller_sortEmployee(listaEmpleados);
+            if(controllerFromText == 1 || controllerFromBinary == 1){
+                controller_sortEmployee(listaEmpleados);
+                controller_ListEmployee(listaEmpleados);
+            }
+            else{
+                printf("\n No se cargaron empleados.\n\n");
+            }
             system("pause");
             break;
         case 8:

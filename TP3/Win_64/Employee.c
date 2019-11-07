@@ -140,3 +140,82 @@ int employee_getSueldo(Employee* this,float* sueldo)
     }
     return retorno;
 }
+
+
+int compareEmployeeSueldo(void* this,void* thisAux)
+{
+    int retorno=-1;
+
+    float sueldo;
+
+    float sueldoAux;
+
+    employee_getSueldo(this,&sueldo);
+    employee_getSueldo(thisAux,&sueldoAux);
+
+    if(sueldo>sueldoAux)
+    {
+        retorno =1;
+    }
+    else if(sueldo==sueldoAux)
+    {
+        retorno=-1;
+    }
+    else
+    {
+        retorno=0;
+    }
+
+
+    return retorno;
+}
+
+int compareEmployeeHoras(void* this,void* thisAux)
+{
+    int retorno=-1;
+
+    int horas;
+
+    int horasAux;
+
+    employee_getHorasTrabajadas(this,&horas);
+    employee_getHorasTrabajadas(thisAux,&horasAux);
+
+    if(horas>horasAux)
+    {
+        retorno =1;
+    }
+    else if(horas==horasAux)
+    {
+        retorno=-1;
+    }
+    else
+    {
+        retorno=0;
+    }
+}
+
+int compareEmployeeNombre(void* this,void* thisAux)
+{
+    int retorno=-1;
+
+    char nombre[32];
+
+    char nombreAux[32];
+
+    employee_getNombre(this,&nombre);
+    employee_getNombre(thisAux,&nombreAux);
+
+    if(strcmp(nombre,nombreAux)==1)
+    {
+        retorno =1;
+    }
+    else if(strcmp(nombre,nombreAux)==-1)
+    {
+        retorno=-1;
+    }
+    else
+    {
+        retorno=0;
+    }
+}
